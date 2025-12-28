@@ -6,7 +6,7 @@ It has been modified to try to understand how the class methods return values.
 It workes poorly with DFPlayer.   
 
 * Serial Monitor output with SD card in place  
-...
+```
 17:40:13.110 -> DFRobot DFPlayer Mini Demo  
 17:40:13.110 -> Compiled at: Dec 28 2025 17:27:08  
 17:40:13.110 -> Initializing DFPlayer ... (May take 3~5 seconds)  
@@ -31,10 +31,10 @@ It workes poorly with DFPlayer.
 17:40:24.799 -> Forth time, readFileCounts(): 9  
 17:40:24.831 -> readCurrentFileNumber(): 9  
 17:40:24.877 -> Again, readCurrentFileNumber(): 0  
-...
+```
   
 * Serial Monitor output with SD card removed
-...  
+```
 17:44:48.626 -> ets Jul 29 2019 12:21:46  
 17:44:48.626 ->   
 17:44:48.626 -> rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)  
@@ -58,10 +58,10 @@ It workes poorly with DFPlayer.
 17:44:49.176 -> DFPlayer Mini online.  
 17:44:49.176 -> Files found: -1  
 17:44:52.711 -> Current file number:  
-  ...
+```
   
-Removing the SD card during loop causes the loop test to lock up on the State
-...
+* Removing the SD card during loop causes the loop test to lock up on the State
+```
 17:47:50.252 -> Loop test.  
 17:47:50.346 -> myDFPlayer.available() is available  
 17:47:50.346 -> myDFPlayer.readType() is: 11  
@@ -71,12 +71,12 @@ Removing the SD card during loop causes the loop test to lock up on the State
 17:47:50.346 -> State: 512  
 17:47:50.393 -> Again, State: -1  
 17:47:53.489 -> Third time, State:  
-...
+```
 
 It works poorly but different with TD5580A mini MP3 players. In particular with the TD5580A mini MP3 player the sketch can detect SD card in the connector or not. So for the SD card detection it works better than with the DFPlayer.  
 
 * Serial Monitor output with SD card in place  
-...
+```
 7:36:27.591 -> Loop test.  
 17:36:27.674 -> myDFPlayer.available() not available  
 17:36:27.707 -> myDFPlayer.readType() is: 11  
@@ -93,10 +93,10 @@ It works poorly but different with TD5580A mini MP3 players. In particular with 
 17:36:27.974 -> Again, readCurrentFileNumber(): 0  
 17:36:28.007 -> Third time, readCurrentFileNumber(): 0  
 17:36:28.041 -> Forth time, readCurrentFileNumber(): 0  
-...
+```
 
 * Serial Monitor output with SD card removed at boot
-...  
+``` 
 17:52:30.726 -> ets Jul 29 2019 12:21:46  
 17:52:30.726 ->   
 17:52:30.726 -> rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)  
@@ -120,10 +120,10 @@ It works poorly but different with TD5580A mini MP3 players. In particular with 
 17:52:31.292 -> DFPlayer Mini online.  
 17:52:31.292 -> Files found: -1  
 17:52:34.804 -> Current file number:
-  ...
+```
   
 * Serial Monitor output with SD card removed during loop
-...
+```
 17:38:30.641 -> Loop test.  
 17:38:30.717 -> myDFPlayer.available() is available  
 17:38:30.752 -> myDFPlayer.readType() is: 3  
@@ -137,7 +137,7 @@ It works poorly but different with TD5580A mini MP3 players. In particular with 
 17:38:30.752 -> State: -1  
 17:38:30.785 -> Again, State: -1  
 17:38:34.280 -> Third time, State:   
-...
+```
 
 
 
