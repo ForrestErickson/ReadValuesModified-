@@ -83,6 +83,9 @@ void setup() {
   Serial.print("Player State: ");
   Serial.println(myDFPlayer.readState());
 
+  Serial.println("Playing file 1");
+  myDFPlayer.play(1);
+
 
   //    value = myDFPlayer.readState(); //read mp3 state
   //    value = myDFPlayer.readVolume(); //read current volume
@@ -161,7 +164,8 @@ void loop() {
     Serial.print("Forth time, readCurrentFileNumber(): ");
     Serial.println(myDFPlayer.readCurrentFileNumber());
 
-
+    //myDFPlayer.loop(1);
+    //myDFPlayer.play(1);
 
     // if (value == -1) {                             //Error while Reading.
     //   Serial.println("Error while reading. ");
