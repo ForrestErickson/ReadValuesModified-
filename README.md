@@ -5,7 +5,7 @@ It has been modified to try to understand how the class methods return values.
 ## Function Detials
 It workes poorly with DFPlayer.   
 
-* Serial Monitor output with SD card in place
+* Serial Monitor output with SD card in place  
 ...
 17:40:13.110 -> DFRobot DFPlayer Mini Demo  
 17:40:13.110 -> Compiled at: Dec 28 2025 17:27:08  
@@ -60,10 +60,22 @@ It workes poorly with DFPlayer.
 17:44:52.711 -> Current file number:  
   ...
   
+Removing the SD card during loop causes the loop test to lock up on the State
+...
+17:47:50.252 -> Loop test.  
+17:47:50.346 -> myDFPlayer.available() is available  
+17:47:50.346 -> myDFPlayer.readType() is: 11  
+17:47:50.346 -> myDFPlayer.read() is: 0  
+17:47:50.346 -> myDFPlayer.readType() is: 11  
+17:47:50.346 -> myDFPlayer.read() is: 0  
+17:47:50.346 -> State: 512  
+17:47:50.393 -> Again, State: -1  
+17:47:53.489 -> Third time, State:  
+...
 
 It works poorly but different with TD5580A mini MP3 players. In particular with the TD5580A mini MP3 player the sketch can detect SD card in the connector or not. So for the SD card detection it works better than with the DFPlayer.  
 
-* Serial Monitor output with SD card in place
+* Serial Monitor output with SD card in place  
 ...
 7:36:27.591 -> Loop test.  
 17:36:27.674 -> myDFPlayer.available() not available  
@@ -82,8 +94,35 @@ It works poorly but different with TD5580A mini MP3 players. In particular with 
 17:36:28.007 -> Third time, readCurrentFileNumber(): 0  
 17:36:28.041 -> Forth time, readCurrentFileNumber(): 0  
 ...
+
+* Serial Monitor output with SD card removed at boot
+...  
+17:52:30.726 -> ets Jul 29 2019 12:21:46  
+17:52:30.726 ->   
+17:52:30.726 -> rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)  
+17:52:30.726 -> configsip: 0, SPIWP:0xee  
+17:52:30.726 -> clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00  
+17:52:30.726 -> mode:DIO, clock div:1  
+17:52:30.726 -> load:0x3fff0030,len:4832  
+17:52:30.726 -> load:0x40078000,len:16460  
+17:52:30.726 -> load:0x40080400,len:4  
+17:52:30.726 -> load:0x40080404,len:3504  
+17:52:30.726 -> entry 0x400805cc  
+17:52:30.860 ->   
+17:52:30.860 -> DFRobot DFPlayer Mini Demo  
+17:52:30.860 -> Compiled at: Dec 28 2025 17:27:08  
+17:52:30.860 -> Initializing DFPlayer ... (May take 3~5 seconds)  
+17:52:31.066 -> !!!!!!!!!!!!  
+17:52:31.066 -> Unable to begin:  
+17:52:31.066 -> 1.Please recheck the connection!  
+17:52:31.066 -> 2.Please insert the SD card or USB drive!  
+17:52:31.066 -> !!!!!!!!!!!!  
+17:52:31.292 -> DFPlayer Mini online.  
+17:52:31.292 -> Files found: -1  
+17:52:34.804 -> Current file number:
+  ...
   
-* Serial Monitor output with SD card removed
+* Serial Monitor output with SD card removed during loop
 ...
 17:38:30.641 -> Loop test.  
 17:38:30.717 -> myDFPlayer.available() is available  
