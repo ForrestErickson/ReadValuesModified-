@@ -24,6 +24,7 @@
 
 //after specifying the device, the user needs to wait for 200ms before sending the specified track.
 #define timeToTrack 200 //mS from TD5580A specification,
+#define REPEAT_TIME 5000 // mS for main loop
 
 #include "Arduino.h"
 #include "DFRobotDFPlayerMini.h"
@@ -69,19 +70,28 @@ void setup() {
   delay(timeToTrack);
   //myDFPlayer.setTimeOut(500); // Set serial communication time out to 500ms
   myDFPlayer.setTimeOut(3500);  // Set serial communication time out to 3.5 seconds
+  
+  myDFPlayer.volume(30); // Set to maximum volume.
 
   Serial.println(F("DFPlayer Mini online."));
 
+  myDFPlayer.readFileCounts();
   Serial.print("Files found: ");
   Serial.println(myDFPlayer.readFileCounts());
 
+  myDFPlayer.readCurrentFileNumber();
   Serial.print("Current file number: ");
   Serial.println(myDFPlayer.readCurrentFileNumber());
   //    value = myDFPlayer.readCurrentFileNumber(); //read current play file number
 
 
+  myDFPlayer.readState();
   Serial.print("Player State: ");
   Serial.println(myDFPlayer.readState());
+
+  myDFPlayer.readVolume();
+  Serial.print("Volume set: ");
+  Serial.println(myDFPlayer.readVolume());
 
   Serial.println("Playing file 1");
   myDFPlayer.play(1);
@@ -97,8 +107,10 @@ void setup() {
 void loop() {
   static unsigned long timer = millis();
 
-  if (millis() - timer > 3000) {
-    timer = millis();
+//  if (millis() - timer > 3000) {
+  if (millis() - timer > REPEAT_TIME) {
+//    timer = millis();
+    timer = timer + REPEAT_TIME; //Preserves period
 
     int value;
 
@@ -128,14 +140,14 @@ void loop() {
     Serial.println(myDFPlayer.read());
 
 
-    myDFPlayer.available();
-    printDetail(myDFPlayer.readType(), myDFPlayer.read());
-    myDFPlayer.available();
-    printDetail(myDFPlayer.readType(), myDFPlayer.read());
-    myDFPlayer.available();
-    printDetail(myDFPlayer.readType(), myDFPlayer.read());
-    myDFPlayer.available();
-    printDetail(myDFPlayer.readType(), myDFPlayer.read());
+    // myDFPlayer.available();
+    // printDetail(myDFPlayer.readType(), myDFPlayer.read());
+    // myDFPlayer.available();
+    // printDetail(myDFPlayer.readType(), myDFPlayer.read());
+    // myDFPlayer.available();
+    // printDetail(myDFPlayer.readType(), myDFPlayer.read());
+    // myDFPlayer.available();
+    // printDetail(myDFPlayer.readType(), myDFPlayer.read());
 
     Serial.print("State: ");
     Serial.println(myDFPlayer.readState());
@@ -165,7 +177,8 @@ void loop() {
     Serial.println(myDFPlayer.readCurrentFileNumber());
 
     //myDFPlayer.loop(1);
-    //myDFPlayer.play(1);
+    myDFPlayer.next();
+
 
     // if (value == -1) {                             //Error while Reading.
     //   Serial.println("Error while reading. ");
