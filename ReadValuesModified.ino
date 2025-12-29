@@ -1,4 +1,5 @@
 //ReadValuesModified
+#define FIRMWARE_VERSION "v0.0.1"
 
 /***************************************************
  DFPlayer - A Mini MP3 Player For Arduino
@@ -52,6 +53,7 @@ void setup() {
 
   Serial.println();
   Serial.println(F("DFRobot DFPlayer Mini Demo"));
+  Serial.println(FIRMWARE_VERSION);
   Serial.print("Compiled at: ");
   Serial.println(F(__DATE__ " " __TIME__));  //compile date that is used for a unique identifier
 
@@ -82,9 +84,7 @@ void setup() {
   myDFPlayer.readCurrentFileNumber();
   Serial.print("Current file number: ");
   Serial.println(myDFPlayer.readCurrentFileNumber());
-  //    value = myDFPlayer.readCurrentFileNumber(); //read current play file number
-
-
+  
   myDFPlayer.readState();
   Serial.print("Player State: ");
   Serial.println(myDFPlayer.readState());
@@ -107,19 +107,11 @@ void setup() {
 void loop() {
   static unsigned long timer = millis();
 
-//  if (millis() - timer > 3000) {
   if (millis() - timer > REPEAT_TIME) {
-//    timer = millis();
     timer = timer + REPEAT_TIME; //Preserves period
 
-    int value;
+//    int value;
 
-    //    value = myDFPlayer.readState(); //read mp3 state
-    //    value = myDFPlayer.readVolume(); //read current volume
-    //    value = myDFPlayer.readEQ(); //read EQ setting
-    //    value = myDFPlayer.readFileCounts(); //read all file counts in SD card
-    // value = myDFPlayer.readCurrentFileNumber(); //read current play file number
-    //value = myDFPlayer.readFileCountsInFolder(3);  //read file counts in folder SD:/03
     Serial.println();
     Serial.println("Loop test.");
     delay(100);
@@ -129,7 +121,6 @@ void loop() {
       Serial.println(myDFPlayer.readType());
       Serial.print("myDFPlayer.read() is: ");
       Serial.println(myDFPlayer.read());
-//      printDetail(myDFPlayer.readType(), myDFPlayer.read());  //Print the detail message from DFPlayer to handle different errors and states.
     } else {
       Serial.println("myDFPlayer.available() not available");
     }
@@ -138,16 +129,6 @@ void loop() {
     Serial.println(myDFPlayer.readType());
     Serial.print("myDFPlayer.read() is: ");
     Serial.println(myDFPlayer.read());
-
-
-    // myDFPlayer.available();
-    // printDetail(myDFPlayer.readType(), myDFPlayer.read());
-    // myDFPlayer.available();
-    // printDetail(myDFPlayer.readType(), myDFPlayer.read());
-    // myDFPlayer.available();
-    // printDetail(myDFPlayer.readType(), myDFPlayer.read());
-    // myDFPlayer.available();
-    // printDetail(myDFPlayer.readType(), myDFPlayer.read());
 
     Serial.print("State: ");
     Serial.println(myDFPlayer.readState());
@@ -178,22 +159,6 @@ void loop() {
 
     //myDFPlayer.loop(1);
     myDFPlayer.next();
-
-
-    // if (value == -1) {                             //Error while Reading.
-    //   Serial.println("Error while reading. ");
-
-    //   //      printDetail(myDFPlayer.readType(), myDFPlayer.read());
-    // } else {  //Successfully get the result.
-    //   Serial.print("File count: ");
-    //   Serial.println(value);
-    // }
-    // if (myDFPlayer.available()) {
-    //   printDetail(myDFPlayer.readType(), myDFPlayer.read());  //Print the detail message from DFPlayer to handle different errors and states.
-    // } else {
-    //  Serial.println("myDFPlayer.available() not available");
-    // }
-
   }  // end millstimer
 }  // end loop()
 
