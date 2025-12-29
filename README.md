@@ -141,5 +141,9 @@ It works poorly but different with TD5580A mini MP3 players. In particular with 
 
 
 
+## References  
+"...practice things are different: depending on the manufacturers and versions, the features they offer are not always there...."
+https://bigsoundbank.com/articles/df-player-mini-f104.html
+
 
 
